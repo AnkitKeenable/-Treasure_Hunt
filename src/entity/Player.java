@@ -14,20 +14,22 @@ public class Player extends Entity{
     GamePanel gp;
     KeyHandler keyH;
 
-    public final int screenX;
-    public final int screenY;
-    int haskey=0;
+    public final int screenX;  // Player's position on the screen (X-coordinate)
+    public final int screenY;   // Player's position on the screen (Y-coordinate)
+    int haskey=0;  // counter for collected keys
 
 
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp=gp;
         this.keyH=keyH;
 
+        // calculate player screen position based on screen size and tile size
         screenX=gp.screenWidth/2-(gp.tileSize/2);
         screenY=gp.screenHeight/2-(gp.tileSize/2);
 
         solidArea=new Rectangle();
 
+        //  define collision area dimension
         solidArea.x=8;
         solidArea.y=16;
         solidAreaDefaultX=solidArea.x;
@@ -76,6 +78,8 @@ public class Player extends Entity{
 
     public void update(){
 
+//        Check if any movement keys are pressed
+
         if (keyH.upPressed ||keyH.rightPressed||keyH.leftPressed|| keyH.downPressed ){
 
             if (keyH.upPressed){
@@ -89,11 +93,15 @@ public class Player extends Entity{
             }
 
             collision=false;
-            gp.collisionChecker.checkTile(this);
+            gp.collisionChecker.checkTile(this);  // Check for tile collisions
 
+
+            //Check for interactions with objects
         int objIndex=  gp.collisionChecker.checkObject(this,true);
 
-          pickUpobjectIndex(objIndex);
+          pickUpobjectIndex(objIndex);  // handle Object Interaction
+
+            //Move the player if no collision is detected
 
             if (collision==false){
                 switch (direction){
@@ -114,7 +122,7 @@ public class Player extends Entity{
                 }
             }
             spriteCounter++;
-            if(spriteCounter>10){
+            if(spriteCounter>12){
                 if (spriteNum==1){
                     spriteNum=2;
                 } else if (spriteNum==2) {
@@ -127,6 +135,8 @@ public class Player extends Entity{
     }
 
     private void pickUpobjectIndex(int objIndex) {
+
+        //  Handle interactions with objects in the game
         if (objIndex!=999){
             String objectName=gp.obj[objIndex].name;
 
