@@ -6,7 +6,8 @@
     public class KeyHandler implements KeyListener {
 
 
-        public boolean upPressed, downPressed, leftPressed, rightPressed;
+        public boolean upPressed, downPressed, leftPressed, rightPressed, jumpPressed;
+        public boolean spacePressed;
 
         @Override
         public void keyTyped(KeyEvent e) {
@@ -16,7 +17,7 @@
         @Override
         public void keyPressed(KeyEvent e) {
 
-            int code=e.getKeyCode();
+            int code=e.getKeyCode();  // return thr number of the key that pressed
 
             // Update the boolean flags based on the key pressed
             if (code==KeyEvent.VK_W){
@@ -33,6 +34,10 @@
 
             if (code==KeyEvent.VK_D){
                 rightPressed=true;
+            }
+
+            if (code==KeyEvent.VK_SPACE){
+                spacePressed=true;
             }
         }
 
@@ -55,6 +60,9 @@
 
             if (code==KeyEvent.VK_D){
                 rightPressed=false;
+            }
+            if (code == KeyEvent.VK_SPACE) {
+                spacePressed = false;
             }
         }
     }

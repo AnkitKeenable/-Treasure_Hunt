@@ -34,14 +34,14 @@ public class TileManager {
         tile[1].collision=true;
 
         tile[2]=new Tile();
-        tile[2].image= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/src/main/resources/tiles/water.png")));
+        tile[2].image= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/src/main/resources/tiles/tree.png")));
         tile[2].collision=true;
 
         tile[3]=new Tile();
         tile[3].image= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/src/main/resources/tiles/earth.png")));
 
         tile[4]=new Tile();
-        tile[4].image= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/src/main/resources/tiles/tree.png")));
+        tile[4].image= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/src/main/resources/tiles/water.png")));
         tile[4].collision=true;
 
         tile[5]=new Tile();
